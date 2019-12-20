@@ -1,0 +1,867 @@
+/* Base Styles -------------------- */
+body{
+  font-family: "a0810";
+  font-weight: bold;
+  background: #f8f8f8;
+}
+header{
+  margin-top: 25px;
+  width: 100%;
+  position: absolute;
+  z-index: 99;
+  @include sm{ margin-top: 0;}
+  @include esm{ margin-top: 0;}
+  .header-wrap{
+    background: $c-black;
+    min-height: 70px;
+    @include sm{ padding: 15px 0px;}
+    @include esm{ padding: 15px 0px;}
+    .navbar{
+      padding: 0;
+      .navbar-collapse{
+        @include md{ padding-top: 30px; border-top: 1px solid $gray-100; margin-top: 30px}
+        @include sm{ padding-top: 30px; border-top: 1px solid $gray-100; margin-top: 30px}
+        @include esm{ padding-top: 30px; border-top: 1px solid $gray-100; margin-top: 30px}
+      }
+      .navbar-brand{
+        margin-left: 25px;
+      }
+
+      .navbar-toggler{
+        display: none;
+        outline: 0;
+        flex-direction: column;
+        align-items: flex-end;
+
+        @include md{
+          display: flex;
+        }
+        @include sm{
+          display: flex;
+        }
+        @include esm{
+          display: flex;
+        }
+        .line{
+          transition: all ease 300ms;
+          display: block;
+          height: 5px;
+          width: 30px;
+          border-radius: 4px;
+          background: $white;
+          margin-bottom: 5px;
+          &.line-mid{
+            width: 20px;
+
+          }
+
+        }
+        &[aria-expanded="true"]{
+          .line{
+            transform: rotate(140deg);
+            color: $red;
+            &.line-mid{
+              display: none;
+            }
+            &:nth-child(1){
+              margin-bottom: -5px;
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+      .nav-item{
+        cursor: pointer;
+        position: relative;
+        .custom-dropdown-menu{
+          text-align: left;
+          z-index: 1;
+          top: 74px;
+          visibility: hidden;
+          display: unset;
+          overflow: hidden;
+          opacity: 0;
+          @include transition(all ease 300ms);
+          width: 200px;
+          position: absolute;
+          background: $c-black;
+          @include border-radius(0px 0px 5px 5px);
+          @extend .animated;
+          @extend .shadow-sm;
+          transform: translate(0, 30px);
+          @include md{
+            width: 100%;
+          }
+          @include sm{
+            width: 100%;
+          }
+          @include esm{
+            width: 100%;
+          }
+
+          a.list-item{
+            display: block;
+            border-top: 1px solid $dark;
+            padding: 15px;
+            text-decoration: none;
+            color: $white;
+            i{
+              margin-right: 10px;
+            }
+            &:hover{
+              background: $c-black-hover;
+              i{
+                color: $red;
+              }
+            }
+          }
+        }
+        &:hover{
+          a.nav-link{
+            color: $red;
+          }
+          .custom-dropdown-menu{
+            transform: translate(0, 10px);
+            opacity: 1;
+            visibility: visible;
+            @include md{
+              display: block;
+              position: unset;
+              margin-bottom: 10px;
+            }
+            @include sm{
+              display: block;
+              position: unset;
+              margin-bottom: 10px;
+            }
+            @include esm{
+              display: block;
+              position: unset;
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+      .nav-link{
+        padding: 30px 15px;
+        color: $white;
+        font-family: 'Titillium';
+        font-weight: 500;
+        @include md{ padding: 10px 15px;}
+        @include sm{ padding: 10px 15px;}
+        @include esm{ padding: 10px 15px;}
+        &:hover,&.active{
+          color: $red;
+        }
+      }
+      .link-home{
+        background: $red;
+        margin-left: 15px;
+        @include md{ display: none;}
+        @include sm{ display: none;}
+        @include esm{ display: none;}
+      }
+      .link-dunya{
+        background: $red;
+        padding: 26px 20px;
+        height: 100%;
+        margin-left: 10px;
+        @include md{
+          display: inline-block;
+          margin-bottom: 10px;
+          padding: 10px;
+        }
+        @include sm{
+          display: inline-block;
+          margin-bottom: 10px;
+          padding: 10px;
+        }
+        @include esm{
+          display: inline-block;
+          margin-bottom: 10px;
+          padding: 10px;
+        }
+      }
+      .navbar-collapse{
+
+      }
+
+    }
+
+  }
+}
+#slider{
+  position: relative;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  .tf-element-carousel{
+    position: relative;
+  }
+  .slick-arrow{
+    z-index: 3;
+    top: calc(50% - 0px);
+    width: 55px;
+    height: 75px;
+    transition: all ease 300ms;
+    @include sm{
+      width: 35px;
+      height: 55px;
+    }
+    @include esm{
+      width: 35px;
+      height: 55px;
+    }
+    &.slick-prev{
+      left: 0px;
+      &:before{
+        opacity: 1;
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: url(../img/ikon-ok-sol.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: $red;
+      }
+    }
+    &.slick-next{
+      right:  0px;
+
+      &:before{
+        opacity: 1;
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: url(../img/ikon-ok-sag.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: $red;
+      }
+    }
+    &:hover{
+      background: $secondary;
+      opacity: .75;
+    }
+  }
+
+  .hero-item{
+    min-height: 650px;
+    display: flex !important;
+    align-items: center;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    @include lg{
+      background-size: cover;
+      padding: 0px 100px;
+    }
+    @include md{
+      background-size: cover;
+      padding: 0px 100px;
+    }
+    @include sm{
+      background-size: cover;
+      padding: 0px 100px;
+    }
+    @include esm{
+      background-size: cover;
+      padding: 0px 50px;
+    }
+    h3{
+      font-family: "Zona Pro";
+      font-weight: 600;
+      font-size: 40px;
+      color: $c-black;
+      span.red{
+        color: $red;
+      }
+      @include esm{
+        font-size: 30px;
+      }
+    }
+    p{
+      margin-top: 30px;
+      margin-bottom: 0;
+      font-family: "Titillium";
+      font-size: 15px;
+      font-weight: 500;
+      color: $gray-800;
+    }
+  }
+}
+#main{
+  margin-top: -40px;
+  z-index: 1;
+  .title{
+    font-family: "a0810";
+    font-size: 22px;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 30px;
+    &:after{
+      content: '';
+      width: 70px;
+      height: 2px;
+      background: $red;
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+    }
+  }
+  a.devamini-gor{
+    display: inline-block;
+    padding: 7px 10px;
+    color: $red;
+    background: $white;
+    border: 1px solid $red;
+    text-decoration: none;
+    margin-bottom: 3px;
+    @include lg{
+      margin-bottom: 25px;
+    }
+    @include esm{
+      font-size: 15px;
+      height: 37px;
+    }
+    img{
+      margin-right: 15px;
+      transition: all ease 300ms;
+    }
+    &:hover{
+      img{
+        margin-right: 20px;
+        margin-left: 5px;
+      }
+    }
+  }
+  .b-urunler{
+    .b-urunler-wrap{
+      padding: 30px 40px;
+      margin-top: 30px;
+      background: $white;
+      box-shadow: $box-shadow;
+      h3{
+        font-family: "a0810";
+        margin-bottom: 10px;
+      }
+      p{
+        font-family: "Titillium";
+        font-weight: 400;
+        margin-bottom: 20px;
+      }
+      .urun-ok{
+        width: 35px;
+        height: 40px;
+        border: 1px solid $red;
+        float: left;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.urun-next{
+          border-left: 0;
+          margin-right: 30px;
+        }
+        &:hover{
+          background: $gray-100;
+        }
+      }
+      .slider-urun-sag{
+        display: flex;
+        align-items: flex-end;
+        height: 100%;
+        @include md{
+          display: block;
+          margin-top: 30px;
+          height: unset;
+        }
+        @include sm{
+          display: block;
+          margin-top: 30px;
+          height: unset;
+        }
+        @include esm{
+           display: block;
+           margin-top: 30px;
+           height: unset;
+         }
+
+        .slick-list{
+          height: 100%;
+          .slick-track{
+            height: 100%;
+            .slick-slide{
+              height: 100%;
+              div{
+                height: 100%;
+              }
+            }
+          }
+          .hero-item{
+            height: 100%;
+          }
+        }
+
+        a{
+          position: relative;
+          outline: 0;
+          color: $c-black;
+          display: block;
+          overflow: hidden;
+          height: 100%;
+          @include esm{
+            height: 120px;
+            margin-bottom: 10px;
+          }
+          img{
+            position: relative;
+            z-index: -1;
+            width: 100%;
+            transition: all ease 300ms;
+            object-fit: none;
+            height: 100%;
+            @include esm{
+              object-fit: cover;
+            }
+          }
+          span{
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+            text-align: center;
+            @include lg{
+              bottom: 30px;
+            }
+            @include sm{
+              bottom: 0;
+              padding-bottom: 15px;
+              padding-top: 15px;
+              font-size: 12px;
+              background:rgba($white,.4);
+            }
+            @include esm{
+              bottom: 0;
+              padding-bottom: 15px;
+              padding-top: 15px;
+              font-size: 12px;
+              background:rgba($white,.6);
+            }
+          }
+          &:hover{
+            color: $red;
+            img{
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+  }
+  .b-kurumsal{
+    .b-kurumsal-wrap{
+      background-color: #ffffff;
+      min-height: 350px;
+      box-shadow: $box-shadow;
+      background-image: url("../img/m-kurumsal-bg.png");
+      background-position: right;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 30px 40px;
+      color: #434343;
+      height: 100%;
+      @include lg{
+        background-position: -140px 0px;
+      }
+      @include md{
+        height: unset;
+        margin-bottom: 30px;
+      }
+      @include sm{
+        height: unset;
+        margin-bottom: 30px;
+        background-position: -140px 0px;
+
+      }
+      @include esm{
+        height: unset;
+        margin-bottom: 30px;
+        background-position: -140px 0px;
+
+      }
+
+      h4{
+        font-size: 22px;
+        font-family: a0810;
+      }
+      p{
+        font-family: Titillium;
+        font-weight: 400;
+        max-width: 300px;
+      }
+      a{
+        margin-top: 30px;
+      }
+
+    }
+  }
+  .b-haber-destek{
+    .b-haber-wrap{
+      background-color: #ffffff;
+      min-height: 170px;
+      box-shadow: $box-shadow;
+      margin-bottom: 30px;
+      display: flex;
+      .title{
+        display: flex;
+        justify-content: space-between;
+        @include esm{
+          font-size: 18px;
+        }
+        img{
+
+        }
+      }
+      .bdy{
+        overflow: hidden;
+        padding: 30px 40px;
+        .hero-item{
+          font-family: "Titillium";
+          h3{
+            font-weight: 600;
+            font-size: 16px;
+          }
+          p{
+            font-weight: 400;
+            margin-bottom: 0;
+          }
+        }
+      }
+      .oklar{
+        border-left: 1px solid $gray-300;
+        .haber-ok{
+          width: 50px;
+          padding: 20px 0px;
+          margin: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &:hover{
+            background: rgba($gray-100,.6);
+          }
+          &.haber-prev{
+            height: 35%;
+            border-bottom: 1px solid $gray-300;
+          }
+          &.haber-next{
+            height: 35%;
+            border-bottom: 1px solid $gray-300;
+          }
+          &.ok-arti{
+            height: 30%;
+
+          }
+        }
+      }
+    }
+    .b-destek-wrap{
+      background-color: #ffffff;
+      min-height: 150px;
+      box-shadow: $box-shadow;
+      background-image: url("../img/m-destek-bg.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: contain;
+      text-align: right;
+      padding: 10px 40px;
+      @include lg{
+        background-position: -70px 0px;
+      }
+      @include esm{
+        background-position: -80px 0px;
+      }
+
+      .title{
+        display: block;
+        &:after{
+          right: 0;
+          left: unset;
+        }
+      }
+      a{
+        color: $c-black;
+        text-decoration: none;
+        font-weight: 400;
+        &:hover{
+          color: $red;
+        }
+      }
+
+    }
+  }
+}
+footer{
+  margin-top: 30px;
+  font-family: "Titillium";
+  background: linear-gradient(90deg, rgba($red,1) 50%, rgba($c-black,1) 50%);
+  @include md{
+    background: $c-black;
+  }
+  @include sm{
+    background: $c-black;
+  }
+  @include esm{
+    background: $c-black;
+  }
+  .col{
+    ul{
+      padding: 0;
+      margin: 0;
+      display: flex;
+      li{
+        list-style-type: none;
+
+        a{
+          color: $white;
+          font-weight: 500;
+          padding: 20px 20px;
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          text-decoration: none;
+          img{
+            margin-right: 15px;
+          }
+          &:hover,&.active{
+            color: $red;
+          }
+        }
+      }
+    }
+    &.col-copyright{
+      max-width: 300px;
+      display: flex;
+      align-items: center;
+      color: $white;
+      font-weight: 500;
+
+      @include lg{
+        font-size: 13px;
+        max-width: 100px;
+        text-align: center;
+      }
+      @include md{
+        order:3;
+        min-width: 100% ;
+        padding: 10px 30px;
+      }
+      @include sm{
+        order:3;
+        min-width: 100% ;
+        padding: 10px 30px;
+      }
+      @include esm{
+        order:3;
+        min-width: 100% ;
+        padding: 10px 30px;
+        justify-content: center;
+        font-size: 11px;
+      }
+    }
+    &.col-ikon{
+      ul{
+        float: right;
+        @include md{
+          float: unset;
+        }
+        @include sm{
+          float: unset;
+        }
+        @include esm{
+          float: unset;
+          a{
+            padding-top: 0;
+            padding-bottom: 0;
+            font-size: 11px;
+
+          }
+        }
+
+      }
+    }
+    &.col-menu{
+      background: $c-black;
+      padding-left: 30px;
+      @include esm{
+        padding: 0px 10px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+      }
+      ul{
+        li{
+          a{
+            padding: 20px 5px;
+            @include esm{
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.page{
+  font-family: "Titillium";
+  font-weight: 500;
+  .page-head-img{
+    min-height: 400px;
+    background-position: center;
+    background-size:cover;
+  }
+  &.page-urunler{
+    .page-head-img{
+      min-height: 200px;
+    }
+    .list-group{
+      @include sm{
+        margin-bottom: 30px;
+      }
+      @include esm{
+        margin-bottom: 30px;
+      }
+      li{
+        border-radius: $border-radius;
+        margin-bottom: 10px;
+        a{
+          color: $c-black;
+          text-decoration: none;
+          width: 100%;
+          display: flex;
+          i{
+            color: $red;
+          }
+        }
+        &:hover,&.active{
+          background: rgba($red,1);
+          border-color: $red;
+          a{
+            i{
+              color: $white;
+            }
+            color: $white;
+          }
+        }
+
+      }
+    }
+    .urunler-item-wrap{
+      .item{
+        background: #ffffff;
+        border-radius: $border-radius;
+        padding: 4px;
+        border: 1px solid $gray-300;
+        transition: all ease 300ms;
+        margin-bottom: 30px;
+        &:hover{
+          box-shadow: $box-shadow;
+        }
+        .img{
+          background: #f7f7f7;
+          padding: 20px 0px;
+          img{
+            width: 70%;
+            margin: auto;
+            display: block;
+            border-radius: $border-radius;
+          }
+        }
+        .title{
+          padding: 20px 0px;
+          text-align: center;
+          font-weight: 600;
+        }
+        a{
+          border-top: 1px solid $gray-300;
+          margin-left: -5px;
+          margin-bottom: -5px;
+          margin-right: -5px;
+          padding: 13px;
+          text-align: center;
+          text-decoration: none;
+          color: $c-black;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          img{
+            margin-right: 15px;
+          }
+          &:hover{
+            color: $red;
+          }
+        }
+      }
+    }
+  }
+  .page-wrap{
+    background: $white;
+    padding: 100px 50px;
+    position: relative;
+    @include esm{
+      padding: 50px 0px;
+    }
+    .page-title{
+      position: absolute;
+      top: 0;
+      left: 0;
+      span{
+        top: -30px;
+        position: relative;
+        font-size: 30px;
+        font-weight: 700;
+        display: inline-block;
+        clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+        background: $red;
+        color: $white;
+        padding: 5px 100px 5px 50px;
+        @include esm{
+          top: -25px;
+
+        }
+      }
+    }
+  }
+  &.page-destek{
+
+  }
+}
+/*
+.slick-active .hero-content-2 > *, .slick-active .hero-content-3 > * {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp; }
+.slick-active .hero-content-2 > *:nth-child(1), .slick-active .hero-content-3 > *:nth-child(1) {
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s; }
+.slick-active .hero-content-2 > *:nth-child(2), .slick-active .hero-content-3 > *:nth-child(2) {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s; }
+.slick-active .hero-content-2 > *:nth-child(3), .slick-active .hero-content-3 > *:nth-child(3) {
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s; }
+.slick-active .hero-content-2 > *:nth-child(4), .slick-active .hero-content-3 > *:nth-child(4) {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s; }
+.slick-active .hero-content-2 > *:nth-child(5), .slick-active .hero-content-3 > *:nth-child(5) {
+  -webkit-animation-delay: 2.5s;
+  animation-delay: 2.5s; }
+.slick-active .hero-content-2 > *:nth-child(6), .slick-active .hero-content-3 > *:nth-child(6) {
+  -webkit-animation-delay: 3s;
+  animation-delay: 3s; }*/
